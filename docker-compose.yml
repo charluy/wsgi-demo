@@ -17,7 +17,8 @@ services:
     command: gunicorn wsgi_endpoint:application --bind 0.0.0.0:8000  # Gunicorn + Python app
     # command: gunicorn wsgi_demo.wsgi:application --bind 0.0.0.0:8000  # Gunicorn + Django
     # command: uwsgi --http :8000 --wsgi-file wsgi_endpoint.py  # uWSGI + Python app
-    # command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    # command: uwsgi --uwsgi-socket 0.0.0.0:8000 --wsgi-file wsgi_endpoint.py  # uWSGI + Python app - Hay que pegarle desde un Nginx
+    # command: bash -c "python manage.py runserver 0.0.0.0:8000"  # Para desarrollo
     restart: always
     volumes:
       - .:/code
