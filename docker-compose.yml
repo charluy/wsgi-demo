@@ -14,9 +14,10 @@ services:
 
   wsgi_demo:
     build: .
-    command: gunicorn wsgi_demo.wsgi:application --bind 0.0.0.0:8000 --error-logfile ./log/error.log --access-logfile ./log/access.log --capture-output --log-level debug
+    command: gunicorn wsgi_endpoint:application --bind 0.0.0.0:8000  # Gunicorn + Python app
+    # command: gunicorn wsgi_demo.wsgi:application --bind 0.0.0.0:8000  # Gunicorn + Django
+    # command: uwsgi --http :8000 --wsgi-file wsgi_endpoint.py  # uWSGI + Python app
     # command: bash -c "python manage.py runserver 0.0.0.0:8000"
-    # command: gunicorn wsgi_endpoint:app --bind 0.0.0.0:8000
     restart: always
     volumes:
       - .:/code

@@ -19,4 +19,4 @@ RUN mkdir -p static
 
 COPY . /code/
 
-#CMD bash -c "uwsgi --ini uwsgi.ini"
+CMD bash -c "uwsgi --ini uwsgi.ini"
